@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="patientPane" prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.PatientController">
+   <children>
+      <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="780.0" text="Patient Manage">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="52.0" layoutY="71.0" prefHeight="200.0" prefWidth="150.0" spacing="20.0">
+         <children>
+            <Label fx:id="lblPatientId" prefHeight="30.0" prefWidth="120.0" text="Patient Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPatientName" prefHeight="24.0" prefWidth="156.0" text="Patient Name">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPatientEmail" prefHeight="30.0" prefWidth="120.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPatientAddress" prefHeight="30.0" prefWidth="120.0" text="Address">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMedicalHistory" prefHeight="24.0" prefWidth="151.0" text="Medical History">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <TextField fx:id="txtPatientEmail" layoutX="207.0" layoutY="149.0" prefHeight="34.0" prefWidth="200.0" promptText="abc@gmail.com" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtPatientName" layoutX="207.0" layoutY="104.0" prefHeight="34.0" prefWidth="200.0" promptText="Patient Name" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtPatientId" layoutX="207.0" layoutY="59.0" prefHeight="34.0" prefWidth="120.0" promptText="User Id" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnSearch" layoutX="340.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Pane layoutX="1.0" prefHeight="650.0" prefWidth="50.0" />
+      <TableView fx:id="tblUser" layoutX="36.0" layoutY="354.0" onMouseClicked="#onClickTable" prefHeight="246.0" prefWidth="710.0">
+         <columns>
+            <TableColumn fx:id="colPatientId" prefWidth="85.0" text="Patient Id" />
+            <TableColumn fx:id="colPatientName" prefWidth="105.77775573730469" text="Patient Name" />
+            <TableColumn fx:id="colPatientTele" prefWidth="107.99998474121094" text="Tele" />
+            <TableColumn fx:id="colPatientEmail" prefWidth="70.0" text="Email" />
+            <TableColumn fx:id="colPatientAddress" prefWidth="147.33334350585938" text="Address" />
+            <TableColumn fx:id="colPatientMedicalHistory" prefWidth="170.66668701171875" text="Med_History" />
+         </columns>
+      </TableView>
+      <Pane layoutX="731.0" prefHeight="650.0" prefWidth="50.0" />
+      <Pane layoutX="1.0" layoutY="600.0" prefHeight="50.0" prefWidth="780.0" />
+      <HBox layoutX="70.0" layoutY="296.0" prefHeight="42.0" prefWidth="628.0" spacing="75.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #C5705D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #800000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #0B2F9F;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #117554;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <TextField fx:id="txtPatientAddress" layoutX="207.0" layoutY="193.0" prefHeight="34.0" prefWidth="200.0" promptText="Address" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtMedicalHistory" layoutX="208.0" layoutY="236.0" prefHeight="39.0" prefWidth="510.0" promptText="Enter - Patient Medical History" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <VBox layoutX="439.0" layoutY="205.0" prefHeight="32.0" prefWidth="121.0" spacing="20.0">
+         <children>
+            <Label fx:id="lblPatientTele" prefHeight="30.0" prefWidth="120.0" text="Tele">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <TextField fx:id="txtPatientTele" layoutX="567.0" layoutY="192.0" prefHeight="39.0" prefWidth="150.0" promptText="0XXXXXXXXX" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="185.0" fitWidth="340.0" layoutX="445.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/patient-img-1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,163 @@
+/* --- Button Panel Container --- */
+.button-panel {
+    -fx-background-color: #E0F7FA; /* Soft light teal */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 8, 0, 0, 3);
+}
+
+/* --- Default JFXButton Styling --- */
+.jfx-button {
+    -fx-background-color: linear-gradient(to bottom, #0097A7, #007C91); /* Teal gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    /*-fx-font-size: 14px;*/
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+/* --- Hover Effect --- */
+.jfx-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #00ACC1, #00838F); /* Lighter teal */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 151, 167, 0.3), 12, 0, 0, 4);
+}
+
+/* --- Pressed (Click) Effect --- */
+.jfx-button:pressed {
+    -fx-background-color: #006064; /* Dark teal */
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 151, 167, 0.5), 10, 0, 0, 3);
+}
+
+/* --- Disabled Button Style --- */
+.jfx-button:disabled {
+    -fx-background-color: #B0BEC5; /* Light gray */
+    -fx-text-fill: #546E7A; /* Dark gray text */
+    -fx-opacity: 0.7;
+    -fx-cursor: default;
+}
+
+/*=================================================================================*/
+/* --- Button Default Style --- */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #0097A7, #007C91); /* Teal gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+/* --- Hover Effect --- */
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #00ACC1, #00838F); /* Lighter teal */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 151, 167, 0.3), 12, 0, 0, 4);
+}
+
+/* --- Pressed (Click) Effect --- */
+.button:pressed {
+    -fx-background-color: #006064; /* Dark teal */
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 151, 167, 0.5), 10, 0, 0, 3);
+}
+
+/* --- Disabled Button Style --- */
+.button:disabled {
+    -fx-background-color: #B0BEC5; /* Light gray */
+    -fx-text-fill: #546E7A; /* Dark gray text */
+    -fx-opacity: 0.7;
+    -fx-cursor: default;
+}
+
+/* --- Selected Button Effect --- */
+.selected-button {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C); /* Green Gradient */
+    -fx-border-color: #2E7D32;
+    -fx-border-width: 3px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 175, 80, 0.6), 12, 0, 0, 4);
+}
+
+/* --- Focused Button Effect (Arrow Key Navigation) --- */
+.button:focused, .jfx-button:focused {
+    -fx-background-color: linear-gradient(to bottom, #2eef3a, #388E3C); /* Green Gradient */
+    -fx-border-color: #2E7D32;
+    -fx-border-width: 3px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 175, 80, 0.6), 12, 0, 0, 4);
+}
+
+
+
+/*=================================================================================*/
+/* --- Logout Button Default Style --- */
+.logout-button {
+    -fx-background-color: linear-gradient(to bottom, #D84315, #BF360C); /* Deep Orange Gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    /*-fx-font-size: 14px;*/
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out;
+}
+
+/* --- Hover Effect --- */
+.logout-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #FF5722, #E64A19); /* Bright Orange */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 87, 34, 0.4), 12, 0, 0, 4);
+}
+
+/* --- Pressed (Click) Effect --- */
+.logout-button:pressed {
+    -fx-background-color: #B71C1C; /* Darker red */
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+    -fx-effect: dropshadow(three-pass-box, rgba(183, 28, 28, 0.6), 10, 0, 0, 3);
+}
+
+/* --- Disabled Logout Button --- */
+.logout-button:disabled {
+    -fx-background-color: #B0BEC5; /* Light Gray */
+    -fx-text-fill: #546E7A;
+    -fx-opacity: 0.7;
+    -fx-cursor: default;
+}
+/* --- Selected Logout Button Effect --- */
+.selected-logout {
+    -fx-background-color: linear-gradient(to bottom, #F44336, #D32F2F); /* Bright Red Gradient */
+    -fx-border-color: #B71C1C;
+    -fx-border-width: 3px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(244, 67, 54, 0.6), 12, 0, 0, 4);
+}
+
+/* --- Focused (Arrow Key Selected) Logout Button Effect --- */
+.logout-button:focused {
+    -fx-background-color: linear-gradient(to bottom, #F44336, #D32F2F); /* Bright Red Gradient */
+    -fx-border-color: #B71C1C;
+    -fx-border-width: 3px;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(244, 67, 54, 0.6), 12, 0, 0, 4);
+}

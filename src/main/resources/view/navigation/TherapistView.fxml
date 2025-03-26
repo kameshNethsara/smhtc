@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="therapistPane" prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.TherapistController">
+   <children>
+      <ImageView fitHeight="185.0" fitWidth="340.0" layoutX="435.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/therapist-img-1-bgRemove.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="780.0" text="Therapist Manage">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="51.0" layoutY="71.0" prefHeight="200.0" prefWidth="150.0" spacing="20.0">
+         <children>
+            <Label fx:id="lblTherapistId" prefHeight="30.0" prefWidth="120.0" text="Therapist Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTherapistName" prefHeight="24.0" prefWidth="156.0" text="Therapist Name">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTherapistEmail" prefHeight="30.0" prefWidth="120.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTherapistAddress" prefHeight="30.0" prefWidth="120.0" text="Address">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSpecialization" prefHeight="24.0" prefWidth="151.0" text="Specialization">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <TextField fx:id="txtTherapistEmail" layoutX="206.0" layoutY="149.0" prefHeight="34.0" prefWidth="200.0" promptText="abc@gmail.com" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtTherapistName" layoutX="206.0" layoutY="104.0" prefHeight="34.0" prefWidth="200.0" promptText="Patient Name" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtTherapistId" layoutX="206.0" layoutY="59.0" prefHeight="34.0" prefWidth="120.0" promptText="User Id" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnSearch" layoutX="339.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtTherapistAddress" layoutX="206.0" layoutY="193.0" prefHeight="34.0" prefWidth="200.0" promptText="Address" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtSpecialization" layoutX="207.0" layoutY="236.0" prefHeight="39.0" prefWidth="510.0" promptText="Enter - Patient Medical History" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lblTherapistTele" layoutX="438.0" layoutY="197.0" prefHeight="30.0" prefWidth="120.0" text="Tele">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTherapistTele" layoutX="563.0" layoutY="190.0" prefHeight="39.0" prefWidth="150.0" promptText="0XXXXXXXXX" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Pane layoutY="-1.0" prefHeight="650.0" prefWidth="50.0" />
+      <TableView fx:id="tblUser" layoutX="35.0" layoutY="353.0" onMouseClicked="#onClickTable" prefHeight="229.0" prefWidth="710.0">
+         <columns>
+            <TableColumn fx:id="colTherapistId" prefWidth="90.22222137451172" text="Therapist Id" />
+            <TableColumn fx:id="colTherapistName" prefWidth="118.00003051757812" text="Therapist Name" />
+            <TableColumn fx:id="colTherapistTele" prefWidth="86.4444580078125" text="Tele" />
+            <TableColumn fx:id="colTherapistEmail" prefWidth="105.77774047851562" text="Email" />
+            <TableColumn fx:id="colTherapistAddress" prefWidth="136.0" text="Address" />
+            <TableColumn fx:id="colSpecialization" prefWidth="153.33331298828125" text="Specialization" />
+         </columns>
+      </TableView>
+      <Pane layoutX="730.0" layoutY="-1.0" prefHeight="650.0" prefWidth="50.0" />
+      <Pane layoutY="599.0" prefHeight="50.0" prefWidth="780.0" />
+      <HBox layoutX="69.0" layoutY="295.0" prefHeight="42.0" prefWidth="628.0" spacing="75.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #C5705D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #800000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #0B2F9F;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #117554;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Button fx:id="btnTherapistAvailability" layoutX="570.0" layoutY="599.0" mnemonicParsing="false" onAction="#navigateToTherapistAvailability" prefHeight="35.0" prefWidth="175.0" text="Therapist Availability">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

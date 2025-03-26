@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="userPane" prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.UserController">
+   <children>
+      <ImageView fitHeight="141.0" fitWidth="227.0" layoutX="524.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/user-img-1.jpeg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="780.0" text="Account Manger">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="51.0" layoutY="71.0" prefHeight="165.0" prefWidth="120.0" spacing="20.0">
+         <children>
+            <Label fx:id="lblUserId" prefHeight="30.0" prefWidth="120.0" text="User Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUserName" prefHeight="30.0" prefWidth="120.0" text="User Name">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUserPassword" prefHeight="30.0" prefWidth="120.0" text="Password">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblJobRole" prefHeight="30.0" prefWidth="120.0" text="Job Role">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Pane prefHeight="650.0" prefWidth="50.0" />
+      <TextField fx:id="txtUserPassword" layoutX="179.0" layoutY="152.0" prefHeight="34.0" prefWidth="200.0" promptText="Minimum 8 Characters " style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtUserName" layoutX="179.0" layoutY="105.0" prefHeight="34.0" prefWidth="200.0" promptText="Customer Name" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtUserId" layoutX="179.0" layoutY="59.0" prefHeight="34.0" prefWidth="200.0" promptText="User Id" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnSearch" layoutX="416.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <JFXComboBox fx:id="cmbJobRole" layoutX="179.0" layoutY="202.0" onAction="#handleComboBoxAction" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #0578;" />
+      <TableView fx:id="tblUser" layoutX="51.0" layoutY="342.0" onMouseClicked="#onClickTable" prefHeight="257.0" prefWidth="679.0">
+         <columns>
+            <TableColumn fx:id="colUserId" prefWidth="130.0" text="User Id" />
+            <TableColumn fx:id="colUserName" prefWidth="220.0" text="User Name" />
+            <TableColumn fx:id="colUserPassword" prefWidth="170.0" text="Password" />
+            <TableColumn fx:id="colUserJobRole" prefWidth="170.0" text="Job Role" />
+         </columns>
+      </TableView>
+      <Pane layoutX="730.0" prefHeight="650.0" prefWidth="50.0" />
+      <Pane layoutY="600.0" prefHeight="50.0" prefWidth="780.0" />
+      <HBox layoutX="69.0" layoutY="274.0" prefHeight="42.0" prefWidth="628.0" spacing="75.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #C5705D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #800000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #0B2F9F;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #117554;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

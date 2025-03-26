@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.TherapistAvailabilityController">
+   <children>
+      <ImageView fitHeight="156.0" fitWidth="292.0" layoutX="255.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/therapist-availability-img-2-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="187.0" fitWidth="228.0" layoutX="479.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/therapist-availability-img-1-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="780.0" text="Therapist Availability">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="19.0" layoutY="121.0" prefHeight="200.0" prefWidth="169.0" spacing="20.0" styleClass="label">
+         <children>
+            <Label fx:id="lblTherapistName" prefHeight="30.0" prefWidth="169.0" text="Therapist Name">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSessionId" prefHeight="30.0" prefWidth="169.0" text="Session Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAvailability" prefHeight="30.0" prefWidth="169.0" text="Availability">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAvailabilityDate" prefHeight="24.0" prefWidth="163.0" text="Availability Date">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAvailabilityTime" prefHeight="24.0" prefWidth="166.0" text="Availability Time">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <TextField fx:id="txtTherapistName" layoutX="195.0" layoutY="111.0" prefHeight="39.0" prefWidth="157.0" promptText="Therapist Name" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Pane layoutX="1.0" layoutY="-1.0" prefHeight="650.0" prefWidth="50.0" />
+      <TableView fx:id="tblUser" layoutX="36.0" layoutY="423.0" onMouseClicked="#onClickTable" prefHeight="208.0" prefWidth="710.0">
+         <columns>
+            <TableColumn fx:id="colAvailabilityId" prefWidth="130.0" text="Availability Id" />
+            <TableColumn fx:id="colTherapistId" prefWidth="130.0" text="Therapist Id" />
+            <TableColumn fx:id="colAvailabilityDate" prefWidth="150.0" text="Date" />
+            <TableColumn fx:id="colAvailabilityTime" prefWidth="150.0" text="Time" />
+            <TableColumn fx:id="colAvailability" prefWidth="128.88885498046875" text="Availability" />
+         </columns>
+      </TableView>
+      <Pane layoutX="731.0" prefHeight="650.0" prefWidth="50.0" />
+      <Pane layoutX="1.0" layoutY="599.0" prefHeight="50.0" prefWidth="780.0" />
+      <HBox layoutX="78.0" layoutY="365.0" prefHeight="42.0" prefWidth="628.0" spacing="75.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #C5705D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #800000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #0B2F9F;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #117554;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="347.0" layoutY="114.0" prefHeight="52.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnSearchTherapistName" mnemonicParsing="false" onAction="#btnSearchPatientNameOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="450.0" layoutY="121.0" prefHeight="68.0" prefWidth="154.0" spacing="20.0" styleClass="label">
+         <children>
+            <Label fx:id="lblTherapistId" prefHeight="30.0" prefWidth="120.0" text="Therapist Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAvailabilityId" prefHeight="24.0" prefWidth="142.0" text="Availability Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <DatePicker fx:id="datePickerAvailabilityDate" layoutX="198.0" layoutY="242.0" prefHeight="26.0" prefWidth="150.0" />
+      <TextField fx:id="txtSearchAll" layoutX="390.0" layoutY="53.0" prefHeight="34.0" prefWidth="365.0" />
+      <Button fx:id="btnSearchAll" layoutX="669.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnSearchAllOnAction" prefHeight="38.0" prefWidth="90.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtTherapistId" layoutX="604.0" layoutY="116.0" prefHeight="34.0" prefWidth="150.0" promptText="Therapist Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtSessionId" layoutX="195.0" layoutY="154.0" prefHeight="39.0" prefWidth="157.0" promptText="Session Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="choseBoxAvailabilityTime" layoutX="198.0" layoutY="292.0" prefHeight="18.0" prefWidth="150.0" styleClass="combo-box" />
+      <ChoiceBox fx:id="choseBoxAvailability" layoutX="196.0" layoutY="196.0" prefHeight="18.0" prefWidth="150.0" styleClass="combo-box" />
+      <TextField fx:id="txtAvailabilityId" layoutX="605.0" layoutY="160.0" prefHeight="34.0" prefWidth="150.0" promptText="Availability Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

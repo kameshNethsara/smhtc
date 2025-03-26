@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.DashboardController">
+   <children>
+      <ScrollPane prefHeight="650.0" prefWidth="780.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="780.0" styleClass="root" />
+        </content>
+      </ScrollPane>
+      <Label alignment="CENTER" layoutX="1.0" prefHeight="50.0" prefWidth="780.0" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Pane layoutX="1.0" layoutY="-1.0" prefHeight="650.0" prefWidth="50.0" />
+      <Pane layoutX="731.0" prefHeight="650.0" prefWidth="50.0" />
+   </children>
+</AnchorPane>
