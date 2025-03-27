@@ -1,11 +1,15 @@
 package lk.ijse.gdse.smhtc;
 
+import jakarta.persistence.Transient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import lk.ijse.gdse.smhtc.config.FactoryConfiguration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 
@@ -13,7 +17,17 @@ import static javafx.application.Application.launch;
 
 public class Launcher extends Application {
     public static void main(String[] args) {
+        initializeDataBase();
         launch();
+
+    }
+
+    private static void initializeDataBase() {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        transaction.commit();
+        session.close();
+
     }
 
     @Override
