@@ -14,6 +14,30 @@ public class UserDAOImpl implements UserDAO {
     private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
     @Override
+    public String getNextId() {
+        Optional<String> lastPkOptional = getLastPK();
+
+        if (lastPkOptional.isPresent()) {
+            String lastPk = lastPkOptional.get(); // Ex: "U005"
+            int numberPart = Integer.parseInt(lastPk.substring(1)); // Remove 'U'
+            int nextNumber = numberPart + 1;
+            return String.format("U%03d", nextNumber); // Ex: "U006"
+        }
+
+        return "U001"; // If no previous ID exists
+    }
+    @Override
+    public Optional<String> getLastPK() {
+        Session session = factoryConfiguration.getSession();
+        String lastPk = session.createQuery("SELECT u.id FROM User u ORDER BY u.id DESC", String.class)
+                .setMaxResults(1)
+                .uniqueResult();
+        session.close();
+
+        return Optional.ofNullable(lastPk);
+    }
+
+    @Override
     public boolean save(User entity) {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
@@ -36,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.persist(entity);
+            session.merge(entity);
             transaction.commit();
             return true;
         }catch (Exception e) {
@@ -53,22 +77,28 @@ public class UserDAOImpl implements UserDAO {
         Session session = factoryConfiguration.getSession();
         Transaction transaction = session.beginTransaction();
         try {
+            System.out.println("Finding user by ID: " + pk);
             User user = session.find(User.class, pk);
-            // Customer customer = session.get(Customer.class, pk);
-            if (user!= null) {
+            if (user != null) {
+                System.out.println("User found, proceeding to delete.");
                 session.remove(user);
                 transaction.commit();
+                System.out.println("User deleted.");
                 return true;
+            } else {
+                System.out.println("User not found, cannot delete.");
+                return false;
             }
-            return false;
         }catch (Exception e) {
+            e.printStackTrace();
             transaction.rollback();
             return false;
         }finally {
             if (session != null) {
                 session.close();
             }
-        }    }
+        }
+    }
 
     @Override
     public List<User> getAll() {
@@ -90,18 +120,6 @@ public class UserDAOImpl implements UserDAO {
 //        return Optional.of(customer);
         return Optional.ofNullable(user);
 
-    }
-
-
-    @Override
-    public Optional<String> getLastPK() {
-        Session session = factoryConfiguration.getSession();
-        String lastPk = session.createQuery("SELECT u.id FROM User u ORDER BY u.id DESC", String.class)
-                .setMaxResults(1)
-                .uniqueResult();
-        session.close();
-
-        return Optional.ofNullable(lastPk);
     }
 
     @Override

@@ -43,6 +43,11 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <Label fx:id="lblUserEmail" prefHeight="30.0" prefWidth="120.0" text="Email">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
             <Label fx:id="lblJobRole" prefHeight="30.0" prefWidth="120.0" text="Job Role">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -51,12 +56,12 @@
          </children>
       </VBox>
       <Pane prefHeight="650.0" prefWidth="50.0" />
-      <TextField fx:id="txtUserPassword" layoutX="179.0" layoutY="152.0" prefHeight="34.0" prefWidth="200.0" promptText="Minimum 8 Characters " style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+      <TextField fx:id="txtUserPassword" layoutX="179.0" layoutY="148.0" prefHeight="34.0" prefWidth="200.0" promptText="Minimum 8 Characters " style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtUserName" layoutX="179.0" layoutY="105.0" prefHeight="34.0" prefWidth="200.0" promptText="Customer Name" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+      <TextField fx:id="txtUserName" layoutX="179.0" layoutY="103.0" prefHeight="34.0" prefWidth="200.0" promptText="Customer Name" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -71,18 +76,19 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <JFXComboBox fx:id="cmbJobRole" layoutX="179.0" layoutY="202.0" onAction="#handleComboBoxAction" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #0578;" />
-      <TableView fx:id="tblUser" layoutX="51.0" layoutY="342.0" onMouseClicked="#onClickTable" prefHeight="257.0" prefWidth="679.0">
+      <JFXComboBox fx:id="cmbJobRole" layoutX="179.0" layoutY="239.0" onAction="#handleComboBoxAction" prefHeight="30.0" prefWidth="200.0" style="-fx-border-color: #0578;" />
+      <TableView fx:id="tblUser" layoutX="51.0" layoutY="366.0" onMouseClicked="#onClickTable" prefHeight="257.0" prefWidth="679.0">
          <columns>
             <TableColumn fx:id="colUserId" prefWidth="130.0" text="User Id" />
-            <TableColumn fx:id="colUserName" prefWidth="220.0" text="User Name" />
-            <TableColumn fx:id="colUserPassword" prefWidth="170.0" text="Password" />
-            <TableColumn fx:id="colUserJobRole" prefWidth="170.0" text="Job Role" />
+            <TableColumn fx:id="colUserName" prefWidth="137.33340454101562" text="User Name" />
+            <TableColumn fx:id="colUserPassword" prefWidth="125.111083984375" text="Password" />
+            <TableColumn fx:id="colUserJobRole" prefWidth="107.11114501953125" text="Job Role" />
+            <TableColumn fx:id="colUserEmail" prefWidth="155.5555419921875" text="Email" />
          </columns>
       </TableView>
       <Pane layoutX="730.0" prefHeight="650.0" prefWidth="50.0" />
       <Pane layoutY="600.0" prefHeight="50.0" prefWidth="780.0" />
-      <HBox layoutX="69.0" layoutY="274.0" prefHeight="42.0" prefWidth="628.0" spacing="75.0">
+      <HBox layoutX="69.0" layoutY="306.0" prefHeight="42.0" prefWidth="628.0" spacing="75.0">
          <children>
             <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #C5705D;" text="Reset" textFill="WHITE">
                <font>
@@ -106,5 +112,10 @@
             </Button>
          </children>
       </HBox>
+      <TextField fx:id="txtUserEmail" layoutX="179.0" layoutY="193.0" prefHeight="34.0" prefWidth="200.0" promptText="ex:- abc123@gmail.com" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

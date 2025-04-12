@@ -186,7 +186,7 @@
 }
 
 .table-view .table-row-cell:hover {
-    -fx-background-color: #E0F7FA; /* Softer teal for hover */
+    -fx-background-color: #34b5c6; /* Softer teal for hover */
     -fx-border-color: #80DEEA;
 }
 
