@@ -20,6 +20,9 @@ public class Therapist {
 
     @Column(nullable = false)
     private String phone;
+/////////////////////////////////////
+    @Column(nullable = false)
+    private String address;
 
     @Column(nullable = false)
     private String specialization;

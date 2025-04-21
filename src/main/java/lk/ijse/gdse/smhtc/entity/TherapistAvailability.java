@@ -18,7 +18,13 @@ public class TherapistAvailability {
     @ManyToOne
     @JoinColumn(name = "therapist_id", nullable = false)
     private Therapist therapist;
+//////////////////////////////////////////////////////////
+    @Column(name = "session_Id", nullable = false)
+    private String sessionId;
 
+    @Column(nullable = false)
+    private String availability;  // "Available", "Unavailable"
+/////////////////////////////////////////////////////////
     @Column(nullable = false)
     private LocalDate availableDate;
 

@@ -28,6 +28,10 @@ public class Payment {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
+    //payment type
+    @Column(name = "payment_type",nullable = false)
+    private String paymentType;
+
     @Column(nullable = false)
     private LocalDate paymentDate;
 }

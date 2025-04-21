@@ -56,7 +56,7 @@
             </Label>
          </children>
       </VBox>
-      <TextField fx:id="txtTherapistEmail" layoutX="173.0" layoutY="150.0" prefHeight="34.0" prefWidth="150.0" promptText="abc@gmail.com" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+      <TextField fx:id="txtTherapistEmail" layoutX="173.0" layoutY="150.0" prefHeight="34.0" prefWidth="150.0" promptText="Payment Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
