@@ -69,7 +69,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="btnSearch" layoutX="339.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+      <Button fx:id="btnSearch" layoutX="339.0" layoutY="58.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -89,10 +89,21 @@ public class UserController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        boolean isDeleted = userBO.deleteUser(txtUserId.getText());
-        if (isDeleted) {
-            refreshTable();
-            refreshPage();
+//        boolean isDeleted = userBO.deleteUser(txtUserId.getText());
+//        if (isDeleted) {
+//            refreshTable();
+//            refreshPage();
+//        }
+        try {
+            boolean isDeleted = userBO.deleteUser(txtUserId.getText());
+            if (isDeleted) {
+                showAlert(Alert.AlertType.ERROR, "Delete Successfully", "Delete User.");
+                refreshTable();
+                refreshPage();
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Delete Failed", "could not delete User.");
+            e.printStackTrace();
         }
 
     }

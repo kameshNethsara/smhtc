@@ -1,39 +1,76 @@
 package lk.ijse.gdse.smhtc.bo.custom.impl;
 
 import lk.ijse.gdse.smhtc.bo.custom.TherapistBO;
+import lk.ijse.gdse.smhtc.dao.custom.TherapistDAO;
+import lk.ijse.gdse.smhtc.dao.custom.impl.TherapistDAOImpl;
 import lk.ijse.gdse.smhtc.dto.TherapistDTO;
+import lk.ijse.gdse.smhtc.entity.Therapist;
 
 import java.util.List;
 import java.util.Optional;
 
 public class TherapistBOImpl implements TherapistBO {
+    TherapistDAO therapistDAO = new TherapistDAOImpl();
     @Override
     public String getNextTherapistId() {
-        return "";
+        return therapistDAO.getNextId();
     }
 
     @Override
     public boolean saveTherapist(TherapistDTO therapistDTO) {
-        return false;
+        Therapist therapist = new Therapist(
+                therapistDTO.getId(),
+                therapistDTO.getName(),
+                therapistDTO.getEmail(),
+                therapistDTO.getPhone(),
+                therapistDTO.getAddress(),
+                therapistDTO.getSpecialization()
+        );
+        return therapistDAO.save(therapist);
     }
 
     @Override
     public boolean updateTherapist(TherapistDTO therapistDTO) {
-        return false;
+        Therapist therapist = new Therapist(
+                therapistDTO.getId(),
+                therapistDTO.getName(),
+                therapistDTO.getEmail(),
+                therapistDTO.getPhone(),
+                therapistDTO.getAddress(),
+                therapistDTO.getSpecialization()
+        );
+        return therapistDAO.update(therapist);
     }
 
     @Override
     public boolean deleteTherapist(String pk) {
-        return false;
+        return therapistDAO.delete(pk);
     }
 
     @Override
     public List<TherapistDTO> getAllTherapists() {
-        return List.of();
+        List<Therapist> therapistList = therapistDAO.getAll();
+        return therapistList.stream()
+               .map(therapist -> new TherapistDTO(
+                       therapist.getTherapistId(),
+                       therapist.getName(),
+                       therapist.getEmail(),
+                       therapist.getPhone(),
+                       therapist.getAddress(),
+                       therapist.getSpecialization()
+               )).toList();
     }
 
     @Override
     public Optional<TherapistDTO> findByTherapistId(String pk) {
-        return Optional.empty();
+        Optional<Therapist> therapist = therapistDAO.findById(pk);
+        return therapist.map(t -> new TherapistDTO(
+                t.getTherapistId(),
+                t.getName(),
+                t.getEmail(),
+                t.getPhone(),
+                t.getAddress(),
+                t.getSpecialization()
+        ));
     }
 }
