@@ -1,5 +1,6 @@
 package lk.ijse.gdse.smhtc.dao.custom;
 
+import lk.ijse.gdse.smhtc.entity.Patient;
 import lk.ijse.gdse.smhtc.entity.Therapist;
 
 import java.util.List;
@@ -7,10 +8,10 @@ import java.util.Optional;
 
 public interface PatientDAO {
     public String getNextId();
-    public boolean save(Therapist entity);
-    public boolean update(Therapist entity);
+    public boolean save(Patient entity);
+    public boolean update(Patient entity);
     public boolean delete(String pk);
-    public List<Therapist> getAll();
-    public Optional<Therapist> findById(String pk);
+    public List<Patient> getAll();
+    public Optional<Patient> findById(String pk);
     public Optional<String> getLastPK();
 }
