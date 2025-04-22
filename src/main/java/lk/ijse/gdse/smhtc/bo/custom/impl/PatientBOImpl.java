@@ -6,6 +6,7 @@ import lk.ijse.gdse.smhtc.dao.custom.impl.PatientDAOImpl;
 import lk.ijse.gdse.smhtc.dto.PatientDTO;
 import lk.ijse.gdse.smhtc.entity.Patient;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -79,7 +80,21 @@ public class PatientBOImpl implements PatientBO {
     }
 
     @Override
-    public List<Patient> findByName(String name) {
-        return patientDAO.findByName(name);
+    public List<PatientDTO> findByName(String name) {
+        List<Patient> patients = patientDAO.findByName(name);
+        List<PatientDTO> patientDTOList = new ArrayList<>();
+
+            for (Patient patient : patients) {
+                patientDTOList.add(new PatientDTO(
+                        patient.getPatientId(),
+                        patient.getName(),
+                        patient.getPhone(),
+                        patient.getEmail(),
+                        patient.getAddress(),
+                        patient.getMedicalHistory()
+                ));
+            }
+        return patientDTOList;
     }
+
 }

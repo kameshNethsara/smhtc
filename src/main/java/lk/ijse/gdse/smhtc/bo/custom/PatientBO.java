@@ -15,5 +15,5 @@ public interface PatientBO {
     public List<PatientDTO> getAllPatients();
     public Optional<PatientDTO> findByPatientId(String pk);
     ///////////////////////////////////////////////////////
-    public List<Patient> findByName(String name);
+    public List<PatientDTO> findByName(String name);
 }
