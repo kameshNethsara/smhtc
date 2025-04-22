@@ -39,7 +39,7 @@ import java.util.Properties;
 
 //////////////////////////// Hibernate Property files //////////////////////////////////////////////
 public class FactoryConfiguration {
-    private static FactoryConfiguration factoryConfiguration;
+    public static FactoryConfiguration factoryConfiguration;
     private static SessionFactory sessionFactory;
     private FactoryConfiguration(){
         Configuration configuration = new Configuration();

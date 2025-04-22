@@ -9,9 +9,9 @@ import lombok.*;
 @ToString
 public class PatientProgrammeDTO {
     private String patientId;
-    private String patientName;
+//    private String patientName;
     private String programId;
-    private String programName;
+//    private String programName;
     private String paymentId;
     private String registrationDate;
 }
