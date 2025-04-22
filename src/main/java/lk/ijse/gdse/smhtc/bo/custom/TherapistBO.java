@@ -14,4 +14,7 @@ public interface TherapistBO {
     public boolean deleteTherapist(String pk);
     public List<TherapistDTO> getAllTherapists();
     public Optional<TherapistDTO> findByTherapistId(String pk);
+    ////////////////////////////////////////////////////////////
+    public List<TherapistDTO> findByPhone(String phone);
+    public List<TherapistDTO> findByName(String name);
 }

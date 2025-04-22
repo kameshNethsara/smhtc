@@ -108,4 +108,26 @@ public class TherapistDAOImpl implements TherapistDAO {
         session.close();
         return Optional.ofNullable(therapist);
     }
+
+    @Override
+    public List<Therapist> findByPhone(String phone) {
+        Session session = factoryConfiguration.getSession();
+        List<Therapist> therapistList = session.createQuery("FROM Therapist WHERE phone LIKE :phone", Therapist.class)
+                .setParameter("phone", "%" + phone + "%")
+                .list();
+        session.close();
+        return therapistList;
+    }
+
+    @Override
+    public List<Therapist> findByName(String name) {
+        Session session = factoryConfiguration.getSession();
+        List<Therapist> therapistList = session.createQuery("FROM Therapist WHERE name LIKE :name", Therapist.class)
+                .setParameter("name", "%" + name + "%")
+                .list();
+        session.close();
+        return therapistList;
+    }
+
+
 }

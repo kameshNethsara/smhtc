@@ -120,4 +120,15 @@ public class PatientDAOImpl implements PatientDAO {
         return patientList;
     }
 
+    @Override
+    public List<Patient> findByPhone(String phone) {
+        Session session = factoryConfiguration.getSession();
+        List<Patient> patientList = session.createQuery("FROM Patient WHERE phone LIKE :phone", Patient.class)
+                .setParameter("phone", "%" + phone + "%")
+                .list();
+        session.close();
+        return patientList;
+    }
+
+
 }

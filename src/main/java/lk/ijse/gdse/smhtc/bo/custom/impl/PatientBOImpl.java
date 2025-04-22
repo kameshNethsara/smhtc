@@ -97,4 +97,22 @@ public class PatientBOImpl implements PatientBO {
         return patientDTOList;
     }
 
+    @Override
+    public List<PatientDTO> findByPhone(String phone) {
+        List<Patient> patients = patientDAO.findByPhone(phone);
+        List<PatientDTO> patientDTOList = new ArrayList<>();
+
+            for (Patient patient : patients) {
+                patientDTOList.add(new PatientDTO(
+                        patient.getPatientId(),
+                        patient.getName(),
+                        patient.getPhone(),
+                        patient.getEmail(),
+                        patient.getAddress(),
+                        patient.getMedicalHistory()
+                ));
+            }
+        return patientDTOList;
+    }
+
 }

@@ -73,4 +73,30 @@ public class TherapistBOImpl implements TherapistBO {
                 t.getSpecialization()
         ));
     }
+
+    @Override
+    public List<TherapistDTO> findByPhone(String phone) {
+        return therapistDAO.findByPhone(phone).stream()
+                .map(therapist -> new TherapistDTO(
+                        therapist.getTherapistId(),
+                        therapist.getName(),
+                        therapist.getEmail(),
+                        therapist.getPhone(),
+                        therapist.getAddress(),
+                        therapist.getSpecialization()
+                )).toList();
+    }
+
+    @Override
+    public List<TherapistDTO> findByName(String name) {
+        return therapistDAO.findByName(name).stream()
+                .map(therapist -> new TherapistDTO(
+                        therapist.getTherapistId(),
+                        therapist.getName(),
+                        therapist.getEmail(),
+                        therapist.getPhone(),
+                        therapist.getAddress(),
+                        therapist.getSpecialization()
+                )).toList();
+    }
 }

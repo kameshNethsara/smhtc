@@ -12,4 +12,7 @@ public interface TherapistDAO {
     public List<Therapist> getAll();
     public Optional<Therapist> findById(String pk);
     public Optional<String> getLastPK();
+    ///////////////////////////////////
+    public List<Therapist> findByPhone(String phone);
+    public List<Therapist> findByName(String name);
 }
