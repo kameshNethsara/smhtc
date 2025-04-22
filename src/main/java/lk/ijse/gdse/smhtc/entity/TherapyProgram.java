@@ -25,4 +25,11 @@ public class TherapyProgram {
 
     @OneToMany(mappedBy = "therapyProgram", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Payment> payments;
+
+    public TherapyProgram(String id, String name, String duration, BigDecimal fee) {
+        this.programId = id;
+        this.name = name;
+        this.duration = duration;
+        this.fee = fee;
+    }
 }

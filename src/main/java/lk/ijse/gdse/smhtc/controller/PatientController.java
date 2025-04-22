@@ -190,9 +190,9 @@ public class PatientController implements Initializable {
             //after see
             txtPatientId.setText(selectedPatient.getId());
             txtPatientName.setText(selectedPatient.getName());
-            txtPatientTele.setText(selectedPatient.getEmail());
+            txtPatientEmail.setText(selectedPatient.getEmail());
             txtPatientAddress.setText(selectedPatient.getAddress());
-            txtPatientEmail.setText(selectedPatient.getPhone());
+            txtPatientTele.setText(selectedPatient.getPhone());
             txtMedicalHistory.setText(selectedPatient.getMedicalHistory());
 
             btnSave.setDisable(true);

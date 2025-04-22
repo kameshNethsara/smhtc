@@ -208,8 +208,8 @@ public class TherapistController implements Initializable {
             //after see
             txtTherapistId.setText(selected.getId());
             txtTherapistName.setText(selected.getName());
-            txtTherapistEmail.setText(selected.getPhone());
-            txtTherapistTele.setText(selected.getEmail());
+            txtTherapistTele.setText(selected.getPhone());
+            txtTherapistEmail.setText(selected.getEmail());
             txtTherapistAddress.setText(selected.getAddress());
             txtSpecialization.setText(selected.getSpecialization());
 

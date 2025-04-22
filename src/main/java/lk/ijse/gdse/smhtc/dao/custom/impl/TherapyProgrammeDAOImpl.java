@@ -27,7 +27,7 @@ public class TherapyProgrammeDAOImpl implements TherapyProgrammeDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(entity);
+            session.persist(entity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class TherapyProgrammeDAOImpl implements TherapyProgrammeDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.update(entity);
+            session.merge(entity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -63,7 +63,7 @@ public class TherapyProgrammeDAOImpl implements TherapyProgrammeDAO {
         try {
             TherapyProgram tp = session.get(TherapyProgram.class, pk);
             if (tp != null) {
-                session.delete(tp);
+                session.remove(tp);
                 transaction.commit();
                 return true;
             }
