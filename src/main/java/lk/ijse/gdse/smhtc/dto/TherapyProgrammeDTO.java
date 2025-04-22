@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
-public class TherapyProgrammeDTO {
+public class TherapyProgrammeDTO{
     private String id;
     private String name;
     private String duration;
