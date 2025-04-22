@@ -64,13 +64,13 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="btnSearch" layoutX="340.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+      <Button fx:id="btnSearch" layoutX="340.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
       <Pane layoutX="1.0" prefHeight="650.0" prefWidth="50.0" />
-      <TableView fx:id="tblUser" layoutX="36.0" layoutY="354.0" onMouseClicked="#onClickTable" prefHeight="246.0" prefWidth="710.0">
+      <TableView fx:id="tblPatient" layoutX="36.0" layoutY="354.0" onMouseClicked="#onClickTable" prefHeight="246.0" prefWidth="710.0">
          <columns>
             <TableColumn fx:id="colPatientId" prefWidth="85.0" text="Patient Id" />
             <TableColumn fx:id="colPatientName" prefWidth="105.77775573730469" text="Patient Name" />

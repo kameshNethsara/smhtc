@@ -205,10 +205,11 @@ public class TherapistController implements Initializable {
     void onClickTable(MouseEvent event) {
         TherapistTM selected = tblUser.getSelectionModel().getSelectedItem();
         if (selected != null) {
+            //after see
             txtTherapistId.setText(selected.getId());
             txtTherapistName.setText(selected.getName());
-            txtTherapistTele.setText(selected.getPhone());
-            txtTherapistEmail.setText(selected.getEmail());
+            txtTherapistEmail.setText(selected.getPhone());
+            txtTherapistTele.setText(selected.getEmail());
             txtTherapistAddress.setText(selected.getAddress());
             txtSpecialization.setText(selected.getSpecialization());
 
@@ -260,9 +261,9 @@ public class TherapistController implements Initializable {
     private void setCellValueFactory() {
         colTherapistId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colTherapistName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colTherapistTele.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colTherapistEmail.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        colTherapistEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colTherapistAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colTherapistTele.setCellValueFactory(new PropertyValueFactory<>("phone"));
         colSpecialization.setCellValueFactory(new PropertyValueFactory<>("specialization"));
     }
 
@@ -321,8 +322,8 @@ public class TherapistController implements Initializable {
             setFieldError(txtTherapistId, false);
         }
 
-        // Name: only letters and spaces
-        if (!txtTherapistName.getText().matches("^[A-Za-z\\s]{3,}$")) {
+        // Name: only letters and spaces and .
+        if (!txtTherapistName.getText().matches("^[A-Za-z\\s.]{3,}$")) {
             setFieldError(txtTherapistName, true);
             valid = false;
         } else {
