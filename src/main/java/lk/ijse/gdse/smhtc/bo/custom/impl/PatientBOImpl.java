@@ -77,4 +77,9 @@ public class PatientBOImpl implements PatientBO {
                 entity.getMedicalHistory()
         ));
     }
+
+    @Override
+    public List<Patient> findByName(String name) {
+        return patientDAO.findByName(name);
+    }
 }

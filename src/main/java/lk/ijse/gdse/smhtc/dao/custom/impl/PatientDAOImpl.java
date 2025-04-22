@@ -109,4 +109,15 @@ public class PatientDAOImpl implements PatientDAO {
 
         return Optional.ofNullable(lastPk);
     }
+
+    @Override
+    public List<Patient> findByName(String name) {
+        Session session = factoryConfiguration.getSession();
+        List<Patient> patientList = session.createQuery("FROM Patient WHERE name LIKE :name", Patient.class)
+                .setParameter("name", "%" + name + "%")
+                .list();
+        session.close();
+        return patientList;
+    }
+
 }

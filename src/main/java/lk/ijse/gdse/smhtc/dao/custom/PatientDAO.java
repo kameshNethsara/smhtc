@@ -14,4 +14,6 @@ public interface PatientDAO {
     public List<Patient> getAll();
     public Optional<Patient> findById(String pk);
     public Optional<String> getLastPK();
+    /////////////////////////////////////////
+    public List<Patient> findByName(String name);
 }
