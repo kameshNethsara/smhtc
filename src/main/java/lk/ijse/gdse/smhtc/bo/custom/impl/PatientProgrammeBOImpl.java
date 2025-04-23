@@ -3,9 +3,11 @@ package lk.ijse.gdse.smhtc.bo.custom.impl;
 import lk.ijse.gdse.smhtc.bo.custom.PatientProgrammeBO;
 import lk.ijse.gdse.smhtc.dao.custom.PatientDAO;
 import lk.ijse.gdse.smhtc.dao.custom.PatientProgramDAO;
+import lk.ijse.gdse.smhtc.dao.custom.PaymentDAO;
 import lk.ijse.gdse.smhtc.dao.custom.TherapyProgrammeDAO;
 import lk.ijse.gdse.smhtc.dao.custom.impl.PatientDAOImpl;
 import lk.ijse.gdse.smhtc.dao.custom.impl.PatientProgramDAOImpl;
+import lk.ijse.gdse.smhtc.dao.custom.impl.PaymentDAOImpl;
 import lk.ijse.gdse.smhtc.dao.custom.impl.TherapyProgrammeDAOImpl;
 import lk.ijse.gdse.smhtc.dto.PatientDTO;
 import lk.ijse.gdse.smhtc.dto.PatientProgrammeDTO;
@@ -26,7 +28,7 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
     PatientDAO patientDAO = new PatientDAOImpl();
     TherapyProgrammeDAO therapyProgrammeDAO = new TherapyProgrammeDAOImpl();
     PatientProgramDAO patientProgrammeDAO = new PatientProgramDAOImpl();
-    //PaymentDAO paymentDAO = new PaymentDAOImpl();
+    PaymentDAO paymentDAO = new PaymentDAOImpl();
 
     @Override
     public String getNextPatientId() {
@@ -40,8 +42,7 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
 
     @Override
     public String getNextPaymentId() {
-        return "";
-        //return paymentDAO.getNextId();
+        return paymentDAO.getNextId();
     }
 
     @Override
@@ -102,9 +103,10 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
             // Step 2: Load related entities using DAO or session
             Patient patient = patientDAO.findById(dto.getPatientId()).orElse(null);
             TherapyProgram therapyProgram = therapyProgrammeDAO.findById(dto.getProgramId()).orElse(null);
-            Payment payment = new Payment();  // If PaymentDAO is available, load it; otherwise construct minimal
+            //Payment payment = new Payment();  // If PaymentDAO is available, load it; otherwise construct minimal
+            //payment.setId(dto.getPaymentId());
+            Payment payment = paymentDAO.findById(dto.getPaymentId()).orElse(null);
 
-            payment.setId(dto.getPaymentId());
 
             if (patient == null || therapyProgram == null) {
                 System.out.println("Related entities not found.");
