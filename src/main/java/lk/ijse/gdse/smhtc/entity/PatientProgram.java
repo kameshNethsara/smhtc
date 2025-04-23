@@ -30,4 +30,5 @@ public class PatientProgram {
     @ManyToOne
     @JoinColumn(name = "payment_id", nullable = false)
     private Payment payment;
+
 }

@@ -2,6 +2,7 @@ package lk.ijse.gdse.smhtc.dao.custom.impl;
 
 import lk.ijse.gdse.smhtc.dao.custom.PatientProgramDAO;
 import lk.ijse.gdse.smhtc.entity.PatientProgram;
+import lk.ijse.gdse.smhtc.entity.PatientProgramId;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -46,7 +47,7 @@ public class PatientProgramDAOImpl implements PatientProgramDAO {
     }
 
     @Override
-    public boolean delete(String pk) {
+    public boolean delete(PatientProgramId pk) {
         Transaction transaction = session.beginTransaction();
         try {
             PatientProgram patientProgram = session.find(PatientProgram.class, pk);
@@ -73,7 +74,7 @@ public class PatientProgramDAOImpl implements PatientProgramDAO {
     }
 
     @Override
-    public Optional<PatientProgram> findById(String pk) {
+    public Optional<PatientProgram> findById(PatientProgramId pk) {
         PatientProgram patientProgram = session.get(PatientProgram.class, pk);
         session.close();
         return Optional.ofNullable(patientProgram);
