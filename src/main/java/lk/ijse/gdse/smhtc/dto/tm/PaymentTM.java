@@ -1,4 +1,4 @@
-package lk.ijse.gdse.smhtc.dto;
+package lk.ijse.gdse.smhtc.dto.tm;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-public class PaymentDTO {
+public class PaymentTM {
     private String paymentId;
     private String patientId;
     private String therapyProgramId;
@@ -18,5 +18,4 @@ public class PaymentDTO {
     private BigDecimal amount;
     private String paymentType;
     private LocalDate paymentDate;
-
 }

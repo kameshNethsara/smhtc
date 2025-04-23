@@ -10,11 +10,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.gdse.smhtc.bo.custom.PatientProgrammeBO;
+import lk.ijse.gdse.smhtc.bo.custom.impl.PatientProgrammeBOImpl;
+import lk.ijse.gdse.smhtc.dto.tm.CustomPatientProgrammeTM;
+import lk.ijse.gdse.smhtc.dto.tm.PatientTM;
+import lk.ijse.gdse.smhtc.dto.tm.PaymentTM;
+import lk.ijse.gdse.smhtc.dto.tm.TherapyProgrammeTM;
+import lk.ijse.gdse.smhtc.entity.Payment;
+import lk.ijse.gdse.smhtc.entity.TherapyProgram;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class PatientProgrameController implements Initializable {
+
+    PatientProgrammeBO patientProgrammeBO = new PatientProgrammeBOImpl();
 
     @FXML
     private Button btnDelete;
@@ -38,16 +49,16 @@ public class PatientProgrameController implements Initializable {
     private Button btnUpdate;
 
     @FXML
-    private TableColumn<?, ?> colPRogrameId;
+    private TableColumn<CustomPatientProgrammeTM, String> colPRogrameId;
 
     @FXML
-    private TableColumn<?, ?> colPatientId;
+    private TableColumn<CustomPatientProgrammeTM, String> colPatientId;
 
     @FXML
-    private TableColumn<?, ?> colPaymentId;
+    private TableColumn<CustomPatientProgrammeTM, String> colPaymentId;
 
     @FXML
-    private TableColumn<?, ?> colRegisterDate;
+    private TableColumn<CustomPatientProgrammeTM, LocalDate> colRegisterDate;
 
     @FXML
     private DatePicker datePickerRegisterDate;
@@ -71,7 +82,7 @@ public class PatientProgrameController implements Initializable {
     private Label lblRegisterDate;
 
     @FXML
-    private TableView<?> tblUser;
+    private TableView<CustomPatientProgrammeTM> tblUser;
 
     @FXML
     private TextField txtPatientId;
