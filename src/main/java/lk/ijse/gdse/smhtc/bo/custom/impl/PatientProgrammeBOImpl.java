@@ -16,10 +16,13 @@ import lk.ijse.gdse.smhtc.entity.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static lk.ijse.gdse.smhtc.config.FactoryConfiguration.factoryConfiguration;
 
@@ -47,47 +50,60 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
 
     @Override
     public boolean savePatientProgramme(PatientProgrammeDTO dto) {
-        try (Session session = factoryConfiguration.getSession()) {
-            Transaction transaction = session.beginTransaction();
+        // Retrieve Patient, TherapyProgram, and Payment from the database
+        Optional<Patient> patientOptional = patientDAO.findById(dto.getPatientId());
+        Optional<TherapyProgram> therapyProgramOptional = therapyProgrammeDAO.findById(dto.getProgramId());
+        Optional<Payment> paymentOptional = paymentDAO.findById(dto.getPaymentId());
 
-            // Composite Primary Key
-            PatientProgramId id = new PatientProgramId(
-                    dto.getPatientId(),
-                    dto.getProgramId()
-            );
+        // Check if any of the required entities are not found
+        if (patientOptional.isEmpty()) {
+            System.err.println("Patient with ID " + dto.getPatientId() + " not found.");
+            return false;
+        }
+        if (therapyProgramOptional.isEmpty()) {
+            System.err.println("Therapy Program with ID " + dto.getProgramId() + " not found.");
+            return false;
+        }
+//        if (paymentOptional.isEmpty()) {
+//            System.err.println("Payment with ID " + dto.getPaymentId() + " not found.");
+//            return false;
+//        }
 
-            // Load related entities using session
-            Patient patient = session.find(
-                    Patient.class,
-                    dto.getPatientId()
-            );
-            TherapyProgram therapyProgram = session.find(
-                    TherapyProgram.class,
-                    dto.getProgramId()
-            );
-            Payment payment = session.find(
-                    Payment.class,
-                    dto.getPaymentId()
-            );
+        // Create a new PatientProgram object
+        PatientProgram patientProgram = new PatientProgram();
+        PatientProgramId id = new PatientProgramId(dto.getPatientId(), dto.getProgramId());
+        patientProgram.setId(id);
+        patientProgram.setPatient(patientOptional.get());
+        patientProgram.setTherapyProgram(therapyProgramOptional.get());
+        //patientProgram.setPayment(paymentOptional.get());
+        patientProgram.setPayment(paymentOptional.orElse(null));
 
-            // Parse date
-            LocalDate regDate = LocalDate.parse(dto.getRegistrationDate());
+        if (dto.getBalance() == null) {
+            patientProgram.setBalance(therapyProgrammeDAO.findById(dto.getProgramId()).get().getFee());
+        }else {
+            patientProgram.setBalance(dto.getBalance());
+        }
 
-            // Build entity
-            PatientProgram entity = new PatientProgram(
-                    id,
-                    patient,
-                    therapyProgram,
-                    regDate,
-                    payment);
+        // Parse the registration date and set it in the patientProgram object
+        try {
+            patientProgram.setRegistrationDate(LocalDate.parse(dto.getRegistrationDate()));
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid registration date format: " + dto.getRegistrationDate());
+            e.printStackTrace();
+            return false;
+        }
 
-            // Save through DAO (DAO does session.persist & transaction handling)
-            boolean result = patientProgrammeDAO.save(entity);
-
-            transaction.commit();
-            return result;
-
+        // Save the patientProgram to the database
+        try {
+            boolean isSaved = patientProgrammeDAO.save(patientProgram);
+            if (isSaved) {
+                System.out.println("Patient program saved successfully.");
+            } else {
+                System.err.println("Failed to save patient program.");
+            }
+            return isSaved;
         } catch (Exception e) {
+            System.err.println("An error occurred while saving the patient program.");
             e.printStackTrace();
             return false;
         }
@@ -96,32 +112,60 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
 
     @Override
     public boolean updatePatientProgramme(PatientProgrammeDTO dto) {
+        // Retrieve Patient, TherapyProgram, and Payment from the database
+        Optional<Patient> patientOptional = patientDAO.findById(dto.getPatientId());
+        Optional<TherapyProgram> therapyProgramOptional = therapyProgrammeDAO.findById(dto.getProgramId());
+        Optional<Payment> paymentOptional = paymentDAO.findById(dto.getPaymentId());
+
+        // Check if any of the required entities are not found
+        if (patientOptional.isEmpty()) {
+            System.err.println("Patient with ID " + dto.getPatientId() + " not found.");
+            return false;
+        }
+        if (therapyProgramOptional.isEmpty()) {
+            System.err.println("Therapy Program with ID " + dto.getProgramId() + " not found.");
+            return false;
+        }
+//        if (paymentOptional.isEmpty()) {
+//            System.err.println("Payment with ID " + dto.getPaymentId() + " not found.");
+//            return false;
+//        }
+
+        // Create a new PatientProgram object
+        PatientProgram patientProgram = new PatientProgram();
+        PatientProgramId id = new PatientProgramId(dto.getPatientId(), dto.getProgramId());
+        patientProgram.setId(id);
+        patientProgram.setPatient(patientOptional.get());
+        patientProgram.setTherapyProgram(therapyProgramOptional.get());
+        //patientProgram.setPayment(paymentOptional.get());
+        patientProgram.setPayment(paymentOptional.orElse(null));
+
+        if (dto.getBalance() == null) {
+            patientProgram.setBalance(therapyProgrammeDAO.findById(dto.getProgramId()).get().getFee());
+        }else {
+            patientProgram.setBalance(dto.getBalance());
+        }
+
+        // Parse the registration date and set it in the patientProgram object
         try {
-            // Step 1: Create Composite Primary Key
-            PatientProgramId id = new PatientProgramId(dto.getPatientId(), dto.getProgramId());
+            patientProgram.setRegistrationDate(LocalDate.parse(dto.getRegistrationDate()));
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid registration date format: " + dto.getRegistrationDate());
+            e.printStackTrace();
+            return false;
+        }
 
-            // Step 2: Load related entities using DAO or session
-            Patient patient = patientDAO.findById(dto.getPatientId()).orElse(null);
-            TherapyProgram therapyProgram = therapyProgrammeDAO.findById(dto.getProgramId()).orElse(null);
-            //Payment payment = new Payment();  // If PaymentDAO is available, load it; otherwise construct minimal
-            //payment.setId(dto.getPaymentId());
-            Payment payment = paymentDAO.findById(dto.getPaymentId()).orElse(null);
-
-
-            if (patient == null || therapyProgram == null) {
-                System.out.println("Related entities not found.");
-                return false;
+        // Save the patientProgram to the database
+        try {
+            boolean isUpdated = patientProgrammeDAO.update(patientProgram);
+            if (isUpdated) {
+                System.out.println("Patient program saved successfully.");
+            } else {
+                System.err.println("Failed to save patient program.");
             }
-
-            // Step 3: Parse date and construct entity
-            LocalDate registrationDate = LocalDate.parse(dto.getRegistrationDate());
-
-            PatientProgram patientProgram = new PatientProgram(id, patient, therapyProgram, registrationDate, payment);
-
-            // Step 4: Update using DAO
-            return patientProgrammeDAO.update(patientProgram);
-
+            return isUpdated;
         } catch (Exception e) {
+            System.err.println("An error occurred while saving the patient program.");
             e.printStackTrace();
             return false;
         }
@@ -130,62 +174,39 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
 
     @Override
     public boolean deletePatientProgramme(PatientProgramId pk) {
-        Session session = factoryConfiguration.getSession();
-        Transaction transaction = null;
-        try (session) {
-            transaction = session.beginTransaction();
-            // Step 1: Use the composite ID (PatientProgramId) to fetch the entity
-            PatientProgram patientProgram = session.get(PatientProgram.class, pk);
-
-            // Step 2: Check if the entity exists
-            if (patientProgram != null) {
-                // Step 3: Remove the entity from the database
-                session.remove(patientProgram);
-                transaction.commit();
-                return true; // Successfully deleted
-            } else {
-                return false; // Entity not found
-            }
-        } catch (Exception e) {
-            transaction.rollback(); // Rollback transaction in case of an error
-            e.printStackTrace();
-            return false; // Error during deletion
-        }
-        // Ensure session is closed
+        return patientProgrammeDAO.delete(pk);
     }
 
     @Override
     public List<PatientProgrammeDTO> getAllPatientProgrammes() {
-        // Step 1: Start a Hibernate session
-        Session session = factoryConfiguration.getSession();
-        try {
-            // Step 2: Retrieve all PatientProgram entities from the database
-            List<PatientProgram> patientPrograms = session.createQuery("FROM PatientProgram", PatientProgram.class).list();
+        List<PatientProgram> patientProgramList = patientProgrammeDAO.getAll();
+        List<PatientProgrammeDTO> dtoList = new ArrayList<>();
 
-            // Step 3: Convert PatientProgram entities to PatientProgrammeDTO objects
-            List<PatientProgrammeDTO> patientProgrammeDTOs = new ArrayList<>();
-            for (PatientProgram patientProgram : patientPrograms) {
-                PatientProgrammeDTO dto = new PatientProgrammeDTO(
-                        patientProgram.getId().getPatientId(),  // Get patientId from the embedded ID
-                        patientProgram.getId().getProgramId(),  // Get programId from the embedded ID
-                        patientProgram.getPayment().getId(),   // Assuming Payment entity has a getId() method
-                        patientProgram.getRegistrationDate().toString() // Convert LocalDate to String
-                );
-                patientProgrammeDTOs.add(dto);
+        String PayID = "";
+        for (PatientProgram pp : patientProgramList) {
+            if (pp.getPayment() == null || pp.getPayment().getPaymentId() == null) {
+                PayID = "N/A";
+            } else {
+                PayID = pp.getPayment().getPaymentId();
             }
 
-            return patientProgrammeDTOs;  // Return the list of DTOs
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Collections.emptyList();  // Return an empty list in case of an error
-        } finally {
-            session.close();  // Always close the session
+            dtoList.add(
+                    new PatientProgrammeDTO(
+                            pp.getPatient().getPatientId(),
+                            pp.getTherapyProgram().getProgramId(),
+                            PayID,
+                            therapyProgrammeDAO.findById(pp.getTherapyProgram().getProgramId()).get().getFee(),
+                            pp.getBalance(),
+                            pp.getRegistrationDate().toString()
+                    )
+            );
         }
+        return dtoList;
     }
 
     @Override
     public List<PatientDTO> findByPatientName(String name) {
-        List<Patient> patients = patientDAO.findByName(name);
+        List<Patient> patients = patientDAO.findByNameList(name);
         List<PatientDTO> patientDTOList = new ArrayList<>();
 
         for (Patient patient : patients) {
@@ -221,7 +242,7 @@ public class PatientProgrammeBOImpl implements PatientProgrammeBO {
 
     @Override
     public List<TherapyProgrammeDTO> findByTherapyProgrammeName(String programmeName) {
-        List<TherapyProgram> entities = therapyProgrammeDAO.findByName(programmeName);
+        List<TherapyProgram> entities = therapyProgrammeDAO.findByNameList(programmeName);
         List<TherapyProgrammeDTO> dtoList = new ArrayList<>();
         for (TherapyProgram tp : entities) {
             dtoList.add(

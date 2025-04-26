@@ -7,6 +7,7 @@ import lk.ijse.gdse.smhtc.dao.custom.impl.UserDAOImpl;
 import lk.ijse.gdse.smhtc.dto.UserDTO;
 import lk.ijse.gdse.smhtc.entity.User;
 import org.hibernate.Session;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,9 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public boolean saveUser(UserDTO userDTO) {
+        // Encrypt the password
+        //String hashedPassword = BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt());
+
         User user = new User(
                 userDTO.getId(),
                 userDTO.getUsername(),
@@ -122,6 +126,25 @@ public class UserBOImpl implements UserBO {
     }
 
     @Override
+    public boolean updateUserPassword(String username, String newPassword) {
+        return userDAO.updatePasswordByUsername(username, newPassword);
+    }
+
+    @Override
+    public Optional<UserDTO> findByUsername(String username) {
+        return userDAO.findByName(username)
+                .map(user -> new UserDTO(
+                        user.getId(),
+                        user.getUsername(),
+                        user.getPassword(),
+                        user.getRole(),
+                        user.getEmail()
+                ));
+    }
+
+
+
+    @Override
     public Optional<String> getLastUserPK() {
         return userDAO.getLastPK();
     }
@@ -147,6 +170,8 @@ public class UserBOImpl implements UserBO {
 
         return role;
     }
+    
+
 
 
 }

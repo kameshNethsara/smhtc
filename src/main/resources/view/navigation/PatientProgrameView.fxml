@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.PatientProgrameController">
     <children>
-        <ImageView fitHeight="171.0" fitWidth="355.0" layoutX="491.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="103.0" fitWidth="148.0" layoutX="13.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../images/patient-programme-img-1-removebg-preview.png" />
             </image>
@@ -126,6 +126,16 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
+            <Label prefHeight="30.0" prefWidth="120.0" text="Program Fee">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="120.0" text="Balance">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
             </children>
         </VBox>
         <TextField fx:id="txtProgrameId" layoutX="604.0" layoutY="159.0" prefHeight="34.0" prefWidth="150.0" promptText="Program Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
@@ -145,5 +155,15 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
+      <Label fx:id="lblProgramFee" layoutX="607.0" layoutY="209.0" prefHeight="30.0" prefWidth="120.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBalance" layoutX="607.0" layoutY="251.0" prefHeight="30.0" prefWidth="120.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

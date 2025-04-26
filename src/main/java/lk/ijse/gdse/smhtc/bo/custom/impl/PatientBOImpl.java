@@ -1,10 +1,13 @@
 package lk.ijse.gdse.smhtc.bo.custom.impl;
 
 import lk.ijse.gdse.smhtc.bo.custom.PatientBO;
+import lk.ijse.gdse.smhtc.dao.DAOFactory;
 import lk.ijse.gdse.smhtc.dao.custom.PatientDAO;
 import lk.ijse.gdse.smhtc.dao.custom.impl.PatientDAOImpl;
 import lk.ijse.gdse.smhtc.dto.PatientDTO;
+import lk.ijse.gdse.smhtc.dto.TherapistDTO;
 import lk.ijse.gdse.smhtc.entity.Patient;
+import lk.ijse.gdse.smhtc.entity.Therapist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class PatientBOImpl implements PatientBO {
 
-    PatientDAO patientDAO = new PatientDAOImpl();
+    PatientDAO patientDAO = (PatientDAO) DAOFactory.getInstance().getDAO(DAOFactory.DAOType.PATIENT);
 
     @Override
     public String getNextPatientId() {
@@ -81,7 +84,7 @@ public class PatientBOImpl implements PatientBO {
 
     @Override
     public List<PatientDTO> findByName(String name) {
-        List<Patient> patients = patientDAO.findByName(name);
+        List<Patient> patients = patientDAO.findByNameList(name);
         List<PatientDTO> patientDTOList = new ArrayList<>();
 
             for (Patient patient : patients) {

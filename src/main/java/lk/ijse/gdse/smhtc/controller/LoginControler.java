@@ -6,19 +6,25 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import lk.ijse.gdse.smhtc.bo.BOFactory;
 import lk.ijse.gdse.smhtc.bo.custom.UserBO;
-import lk.ijse.gdse.smhtc.bo.custom.impl.UserBOImpl;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.Objects;
 
 public class LoginControler {
+
+    UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
     @FXML
     private Pane btnPane;
@@ -42,11 +48,13 @@ public class LoginControler {
     private JFXPasswordField txtPassword;
 
     @FXML
+    private JFXTextField txtPasswordVisible;
+
+    @FXML
     private JFXTextField txtUserName;
 
-    UserBO userBO = new UserBOImpl();
     @FXML
-    void btnSigninOnAction(ActionEvent event) throws IOException {
+    void btnSigninOnAction(ActionEvent event) {
         String username = txtUserName.getText();
         String password = txtPassword.getText();
 
@@ -68,7 +76,87 @@ public class LoginControler {
             e.printStackTrace();
             showAlert("Error", "Something went wrong", e.getMessage());
         }
+
     }
+
+    @FXML
+    void onMouseClickedForgetPassword(MouseEvent event) {
+        try {
+            // Load the SignupView.fxml
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/login/ForgotPasswordView.fxml"));
+            AnchorPane fpPane = fxmlLoader.load();
+
+            // Create a new stage (popup window)
+            Stage stage = new Stage();
+            stage.setTitle("Forgot Password");
+
+            // Set scene
+            Scene scene = new Scene(fpPane);
+            stage.setScene(scene);
+
+            // Disable resizing
+            stage.setResizable(false);
+
+            // Optional: Make it a modal popup (blocks interaction with the login window until closed)
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Unable to open Forgot Password window", e.getMessage());
+        }
+    }
+
+
+    @FXML
+    void signUpOnMouseClicked(MouseEvent event) {
+        try {
+            // Load the SignupView.fxml
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/login/SignupView.fxml"));
+            AnchorPane signupPane = fxmlLoader.load();
+
+            // Create a new stage (popup window)
+            Stage stage = new Stage();
+            stage.setTitle("Sign Up");
+
+            // Set scene
+            Scene scene = new Scene(signupPane);
+            stage.setScene(scene);
+
+            // Disable resizing
+            stage.setResizable(false);
+
+            // Optional: Make it a modal popup (blocks interaction with the login window until closed)
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Show the popup
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Unable to open Sign Up window", e.getMessage());
+        }
+    }
+
+
+    @FXML
+    void setPasswordInvisible(MouseEvent event) {
+        txtPasswordVisible.setVisible(false);
+        txtPassword.setVisible(true);
+        txtPassword.setText(txtPasswordVisible.getText());
+        imgEye.setImage(new Image(Objects.requireNonNull(getClass().getResource("/images/eye-invisible-removebg.png")).toExternalForm()));
+    }
+
+    @FXML
+    void setPasswordVisible(MouseEvent event) {
+        txtPasswordVisible.setVisible(true);
+        txtPassword.setVisible(false);
+        txtPasswordVisible.setText(txtPassword.getText());
+        imgEye.setImage(new Image(Objects.requireNonNull(getClass().getResource("/images/eye-visible-removebg.png")).toExternalForm()));
+    }
+
 
     private void checkJobPosition(String role) throws IOException {
         AnchorPane load;
@@ -97,21 +185,6 @@ public class LoginControler {
     }
 
     @FXML
-    void onMouseClickedForgetPassword(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setPasswordInvisible(MouseEvent event) {
-
-    }
-
-    @FXML
-    void setPasswordVisible(MouseEvent event) {
-
-    }
-
-    @FXML
     void initialize() {
         EneterPressed();
     }
@@ -128,5 +201,7 @@ public class LoginControler {
             }
         });
     }
+
+
 
 }

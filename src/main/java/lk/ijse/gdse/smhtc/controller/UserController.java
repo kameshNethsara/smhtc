@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.gdse.smhtc.bo.BOFactory;
 import lk.ijse.gdse.smhtc.bo.custom.UserBO;
 import lk.ijse.gdse.smhtc.bo.custom.impl.UserBOImpl;
 import lk.ijse.gdse.smhtc.dto.UserDTO;
@@ -19,7 +20,8 @@ import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
 
-    UserBO userBO = new UserBOImpl();
+    //UserBO userBO = new UserBOImpl();
+    UserBO userBO = (UserBO) BOFactory.getInstance().getBO(BOFactory.BOType.USER);
 
     @FXML
     private Button btnDelete;

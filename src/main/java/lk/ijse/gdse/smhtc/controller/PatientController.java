@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.gdse.smhtc.bo.BOFactory;
 import lk.ijse.gdse.smhtc.bo.custom.PatientBO;
 import lk.ijse.gdse.smhtc.bo.custom.impl.PatientBOImpl;
 import lk.ijse.gdse.smhtc.dto.PatientDTO;
@@ -19,10 +20,12 @@ import lk.ijse.gdse.smhtc.dto.tm.TherapistTM;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PatientController implements Initializable {
-    PatientBO patientBO = new PatientBOImpl();
+    //PatientBO patientBO = new PatientBOImpl();
+    PatientBO patientBO = (PatientBO) BOFactory.getInstance().getBO(BOFactory.BOType.PATIENT);
 
     @FXML
     private Button btnDelete;
@@ -127,8 +130,8 @@ public class PatientController implements Initializable {
             PatientDTO dto = new PatientDTO(
                     txtPatientId.getText(),
                     txtPatientName.getText(),
-                    txtPatientTele.getText(),
                     txtPatientEmail.getText(),
+                    txtPatientTele.getText(),
                     txtPatientAddress.getText(),
                     txtMedicalHistory.getText()
             );
@@ -147,14 +150,20 @@ public class PatientController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
-        String id = txtPatientId.getText();
-        patientBO.findByPatientId(id).ifPresent(therapist -> {
-            txtPatientName.setText(therapist.getName());
-            txtPatientTele.setText(therapist.getPhone());
-            txtPatientEmail.setText(therapist.getEmail());
-            txtPatientAddress.setText(therapist.getAddress());
-            txtMedicalHistory.setText(therapist.getMedicalHistory());
-        });
+       try{
+           System.out.println("Search button clicked"); // Debugging line
+           String id = txtPatientId.getText();
+           patientBO.findByPatientId(id).ifPresent(patient -> {
+               txtPatientName.setText(patient.getName());
+               txtPatientTele.setText(patient.getPhone());
+               txtPatientEmail.setText(patient.getEmail());
+               txtPatientAddress.setText(patient.getAddress());
+               txtMedicalHistory.setText(patient.getMedicalHistory());
+           });
+       } catch (Exception e) {
+           e.printStackTrace();
+           System.out.println("Error occurred while searching for patient: " + e.getMessage());
+       }
     }
 
     @FXML
@@ -164,8 +173,8 @@ public class PatientController implements Initializable {
             PatientDTO dto = new PatientDTO(
                     txtPatientId.getText(),
                     txtPatientName.getText(),
-                    txtPatientTele.getText(),
                     txtPatientEmail.getText(),
+                    txtPatientTele.getText(),
                     txtPatientAddress.getText(),
                     txtMedicalHistory.getText()
             );

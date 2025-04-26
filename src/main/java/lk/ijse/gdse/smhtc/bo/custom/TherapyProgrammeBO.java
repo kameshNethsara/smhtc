@@ -1,12 +1,13 @@
 package lk.ijse.gdse.smhtc.bo.custom;
 
+import lk.ijse.gdse.smhtc.bo.SuperBO;
 import lk.ijse.gdse.smhtc.dto.TherapyProgrammeDTO;
 import lk.ijse.gdse.smhtc.entity.TherapyProgram;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface TherapyProgrammeBO {
+public interface TherapyProgrammeBO extends SuperBO {
     public String getNextTherapyProgrammeId();
     public boolean saveTherapyProgramme(TherapyProgrammeDTO therapyProgrammeDTO);
     public boolean updateTherapyProgramme(TherapyProgrammeDTO therapyProgrammeDTO);

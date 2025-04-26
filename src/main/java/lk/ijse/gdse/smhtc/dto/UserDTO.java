@@ -13,4 +13,8 @@ public class UserDTO {
     private String password;
     private String role; //Admin, Receptionist
     private String email;
+
+    public String getEmail(String text) {
+        return email;
+    }
 }

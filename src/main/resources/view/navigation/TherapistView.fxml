@@ -136,5 +136,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="btnTherapistPrograme" layoutX="380.0" layoutY="599.0" mnemonicParsing="false" onAction="#navigateToTherapistPrograme" prefHeight="35.0" prefWidth="175.0" text="Therapist Programe">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

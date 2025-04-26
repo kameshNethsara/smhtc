@@ -3,6 +3,8 @@ package lk.ijse.gdse.smhtc.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -16,19 +18,22 @@ public class PatientProgram {
     @EmbeddedId
     private PatientProgramId id;
 
-    @ManyToOne
+    @Column
+    private BigDecimal balance;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "program_id", nullable = false)
     private TherapyProgram therapyProgram;
 
     @Column(nullable = false)
     private LocalDate registrationDate;
 
-    @ManyToOne
-    @JoinColumn(name = "payment_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "payment_id")//, nullable = false)
     private Payment payment;
 
 }

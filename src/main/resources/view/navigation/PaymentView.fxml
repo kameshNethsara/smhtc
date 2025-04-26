@@ -56,7 +56,7 @@
             </Label>
          </children>
       </VBox>
-      <TextField fx:id="txtTherapistEmail" layoutX="173.0" layoutY="150.0" prefHeight="34.0" prefWidth="150.0" promptText="Payment Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+      <TextField fx:id="txtPaymentId" layoutX="173.0" layoutY="150.0" prefHeight="34.0" prefWidth="150.0" promptText="Payment Id" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtSpecialization" layoutX="174.0" layoutY="237.0" prefHeight="39.0" prefWidth="157.0" promptText="Enter - Patient Medical History" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+      <TextField fx:id="txtAmount" layoutX="174.0" layoutY="237.0" prefHeight="39.0" prefWidth="157.0" promptText="Enter - Patient Medical History" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -113,7 +113,7 @@
             </Button>
          </children>
       </HBox>
-      <ChoiceBox layoutX="176.0" layoutY="196.0" prefWidth="150.0" styleClass="combo-box" />
+      <ChoiceBox fx:id="cmbPaymentType" layoutX="176.0" layoutY="196.0" prefWidth="150.0" styleClass="combo-box" />
       <VBox layoutX="326.0" layoutY="65.0" prefHeight="137.0" prefWidth="100.0" spacing="10.0">
          <children>
             <Button fx:id="btnSearchPatientName" mnemonicParsing="false" onAction="#btnSearchPatientNameOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">

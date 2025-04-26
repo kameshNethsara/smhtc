@@ -7,12 +7,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import lk.ijse.gdse.smhtc.bo.BOFactory;
 import lk.ijse.gdse.smhtc.bo.custom.TherapistBO;
+import lk.ijse.gdse.smhtc.bo.custom.TherapistProgramBO;
 import lk.ijse.gdse.smhtc.bo.custom.impl.TherapistBOImpl;
+import lk.ijse.gdse.smhtc.bo.custom.impl.TherapistProgramBOImpl;
 import lk.ijse.gdse.smhtc.dto.TherapistDTO;
 import lk.ijse.gdse.smhtc.dto.tm.TherapistTM;
 
@@ -24,7 +30,9 @@ import java.util.ResourceBundle;
 
 public class TherapistController implements Initializable {
 
-    TherapistBO therapistBO = new TherapistBOImpl();
+    //TherapistBO therapistBO = new TherapistBOImpl();
+    TherapistBO therapistBO = (TherapistBO) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPIST);
+    TherapistProgramBO therapistProgramBO = (TherapistProgramBO) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPIST_PROGRAM);
 
     @FXML
     private Button btnDelete;
@@ -43,6 +51,9 @@ public class TherapistController implements Initializable {
 
     @FXML
     private Button btnTherapistAvailability;
+
+    @FXML
+    private Button btnTherapistPrograme;
 
     @FXML
     private TableColumn<TherapistTM, String> colSpecialization;
@@ -117,6 +128,25 @@ public class TherapistController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void navigateToTherapistPrograme(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/navigation/TherapistProgrameView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Therapist Programme");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL); // Lock previous window
+            stage.show();
+
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Something went wrong, please contact the developer").show();
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {

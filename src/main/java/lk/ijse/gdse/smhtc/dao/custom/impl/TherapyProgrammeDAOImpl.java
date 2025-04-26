@@ -94,6 +94,11 @@ public class TherapyProgrammeDAOImpl implements TherapyProgrammeDAO {
     }
 
     @Override
+    public Optional<TherapyProgram> findByName(String pk) {
+        return Optional.empty();
+    }
+
+    @Override
     public Optional<String> getLastPK() {
         Session session = FactoryConfiguration.getInstance().getSession();
         String lastPk = session.createQuery("SELECT id FROM TherapyProgram ORDER BY id DESC", String.class)
@@ -104,7 +109,7 @@ public class TherapyProgrammeDAOImpl implements TherapyProgrammeDAO {
     }
 
     @Override
-    public List<TherapyProgram> findByName(String name) {
+    public List<TherapyProgram> findByNameList(String name) {
         Session session = FactoryConfiguration.getInstance().getSession();
         List<TherapyProgram> list = session.createQuery("FROM TherapyProgram WHERE name LIKE :name", TherapyProgram.class)
                 .setParameter("name", "%" + name + "%")

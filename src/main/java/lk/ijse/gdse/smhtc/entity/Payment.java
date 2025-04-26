@@ -35,12 +35,12 @@ public class Payment {
     @Column(nullable = false)
     private LocalDate paymentDate;
 
-    public void setId(String paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public String getId() {
-        return paymentId;
-    }
+//    public void setId(String paymentId) {
+//        this.paymentId = paymentId;
+//    }
+//
+//    public String getId() {
+//        return paymentId;
+//    }
 }
 

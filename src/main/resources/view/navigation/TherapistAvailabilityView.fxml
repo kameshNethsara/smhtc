@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="650.0" prefWidth="780.0" styleClass="root" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.TherapistAvailabilityController">
    <children>
       <ImageView fitHeight="156.0" fitWidth="292.0" layoutX="255.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
@@ -62,7 +61,7 @@
             </Label>
          </children>
       </VBox>
-      <TextField fx:id="txtTherapistName" layoutX="195.0" layoutY="111.0" prefHeight="39.0" prefWidth="157.0" promptText="Therapist Name" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
+      <TextField fx:id="txtTherapistName" layoutX="195.0" layoutY="111.0" prefHeight="39.0" prefWidth="245.0" promptText="Therapist Name" style="-fx-background-color: transpare; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0578;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -105,7 +104,7 @@
       </HBox>
       <VBox layoutX="347.0" layoutY="114.0" prefHeight="52.0" prefWidth="100.0" spacing="10.0">
          <children>
-            <Button fx:id="btnSearchTherapistName" mnemonicParsing="false" onAction="#btnSearchPatientNameOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+            <Button fx:id="btnSearchTherapistName" mnemonicParsing="false" onAction="#btnSearchTherapistNameOnAction" prefHeight="32.0" prefWidth="95.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

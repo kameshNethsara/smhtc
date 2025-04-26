@@ -1,6 +1,8 @@
 package lk.ijse.gdse.smhtc.dao.custom.impl;
 
+import lk.ijse.gdse.smhtc.config.FactoryConfiguration;
 import lk.ijse.gdse.smhtc.dao.custom.PaymentDAO;
+import lk.ijse.gdse.smhtc.entity.Patient;
 import lk.ijse.gdse.smhtc.entity.Payment;
 import org.hibernate.Session;
 
@@ -11,7 +13,7 @@ import static lk.ijse.gdse.smhtc.config.FactoryConfiguration.factoryConfiguratio
 
 public class PaymentDAOImpl implements PaymentDAO {
 
-    private final Session session = factoryConfiguration.getSession();
+    private final FactoryConfiguration factoryConfiguration = FactoryConfiguration.getInstance();
 
     @Override
     public String getNextId() {
@@ -27,6 +29,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public boolean save(Payment entity) {
+        Session session = factoryConfiguration.getSession();
         try {
             session.beginTransaction();
             session.persist(entity);
@@ -41,6 +44,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public boolean update(Payment entity) {
+        Session session = factoryConfiguration.getSession();
         try {
             session.beginTransaction();
             session.update(entity);
@@ -55,6 +59,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public boolean delete(String pk) {
+        Session session = factoryConfiguration.getSession();
         try {
             session.beginTransaction();
             Payment payment = session.get(Payment.class, pk);
@@ -75,16 +80,21 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     @Override
     public List<Payment> getAll() {
+        Session session = factoryConfiguration.getSession();
         try {
-            return session.createQuery("FROM Payment", Payment.class).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return List.of(); // empty immutable list
+            String hql = "SELECT p FROM Payment p " +
+                    "JOIN FETCH p.patient " +
+                    "JOIN FETCH p.therapyProgram " +
+                    "LEFT JOIN FETCH p.therapySession"; // LEFT JOIN for nullable session
+            return session.createQuery(hql, Payment.class).list();
+        } finally {
+            session.close(); // Close session after processing
         }
     }
 
     @Override
     public Optional<Payment> findById(String pk) {
+        Session session = factoryConfiguration.getSession();
         try {
             Payment payment = session.get(Payment.class, pk);
             return Optional.ofNullable(payment);
@@ -95,7 +105,13 @@ public class PaymentDAOImpl implements PaymentDAO {
     }
 
     @Override
+    public Optional<Payment> findByName(String pk) {
+        return Optional.empty();
+    }
+
+    @Override
     public Optional<String> getLastPK() {
+        Session session = factoryConfiguration.getSession();
         try {
             String hql = "SELECT p.paymentId FROM Payment p ORDER BY p.paymentId DESC";
             String lastId = session.createQuery(hql, String.class)

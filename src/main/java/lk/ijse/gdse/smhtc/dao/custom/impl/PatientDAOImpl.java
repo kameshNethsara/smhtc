@@ -100,6 +100,11 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @Override
+    public Optional<Patient> findByName(String pk) {
+        return Optional.empty();
+    }
+
+    @Override
     public Optional<String> getLastPK() {
         Session session = factoryConfiguration.getSession();
         String lastPk = session.createQuery("SELECT p.patientId FROM Patient p ORDER BY p.patientId DESC", String.class)
@@ -111,7 +116,7 @@ public class PatientDAOImpl implements PatientDAO {
     }
 
     @Override
-    public List<Patient> findByName(String name) {
+    public List<Patient> findByNameList(String name) {
         Session session = factoryConfiguration.getSession();
         List<Patient> patientList = session.createQuery("FROM Patient WHERE name LIKE :name", Patient.class)
                 .setParameter("name", "%" + name + "%")
@@ -119,6 +124,8 @@ public class PatientDAOImpl implements PatientDAO {
         session.close();
         return patientList;
     }
+
+
 
     @Override
     public List<Patient> findByPhone(String phone) {

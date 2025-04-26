@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" stylesheets="@../../styleSheets/navigation.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.smhtc.controller.TherapistProgrameController">
+   <children>
+      <Label alignment="CENTER" layoutY="1.0" prefHeight="50.0" prefWidth="500.0" text="Therapist Programe">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="14.0" layoutY="51.0" prefHeight="84.0" prefWidth="120.0" spacing="20.0">
+         <children>
+            <Label fx:id="lblTherapistId" prefHeight="30.0" prefWidth="120.0" text="Therapist Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblProgrameId" prefHeight="24.0" prefWidth="156.0" text="Programe Id">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <TextField fx:id="txtProgrameId" layoutX="144.0" layoutY="92.0" prefHeight="39.0" prefWidth="120.0" promptText="Id" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtTherapistId" layoutX="144.0" layoutY="47.0" prefHeight="34.0" prefWidth="120.0" promptText=" Id" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="32.0" layoutY="160.0" prefHeight="42.0" prefWidth="435.0" spacing="25.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #C5705D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #800000;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #0B2F9F;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #117554;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <TableView fx:id="tblUser" layoutX="34.0" layoutY="223.0" onMouseClicked="#onClickTable" prefHeight="154.0" prefWidth="435.0">
+         <columns>
+            <TableColumn fx:id="colTherapistId" prefWidth="201.33328247070312" text="Therapist Id" />
+            <TableColumn fx:id="colProgrameId" prefWidth="210.66668701171875" text="Programe Id" />
+         </columns>
+      </TableView>
+      <Label fx:id="lblProgrameName" layoutX="272.0" layoutY="100.0" prefHeight="24.0" prefWidth="101.0" text="Programe">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtProgrameName" layoutX="374.0" layoutY="92.0" prefHeight="39.0" prefWidth="120.0" promptText="name" style="-fx-background-color: transpare; -fx-border-color: #0578; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnSearch" layoutX="272.0" layoutY="51.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="38.0" prefWidth="75.0" style="-fx-background-radius: 30;" text="Search" textFill="#187006">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

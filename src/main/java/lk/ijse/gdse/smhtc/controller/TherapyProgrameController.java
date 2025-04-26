@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import lk.ijse.gdse.smhtc.bo.BOFactory;
 import lk.ijse.gdse.smhtc.bo.custom.TherapyProgrammeBO;
 import lk.ijse.gdse.smhtc.bo.custom.impl.TherapyProgrammeBOImpl;
 import lk.ijse.gdse.smhtc.dto.TherapistDTO;
@@ -27,7 +28,8 @@ import java.util.ResourceBundle;
 
 public class TherapyProgrameController implements Initializable {
 
-    TherapyProgrammeBO therapyProgrammeBO = new TherapyProgrammeBOImpl();
+    //TherapyProgrammeBO therapyProgrammeBO = new TherapyProgrammeBOImpl();
+    TherapyProgrammeBO therapyProgrammeBO =(TherapyProgrammeBO) BOFactory.getInstance().getBO(BOFactory.BOType.THERAPY_PROGRAM);
 
     @FXML
     private Button btnDelete;
@@ -315,7 +317,7 @@ public class TherapyProgrameController implements Initializable {
         colProgrameName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colProgrameDuration.setCellValueFactory(new PropertyValueFactory<>("duration"));
         colProgrameFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
-       }
+    }
 
     private void handleArrowKeyNavigation(javafx.scene.input.KeyEvent event, TextField next, TextField previous) {
         switch (event.getCode()) {

@@ -78,7 +78,7 @@ public class TherapyProgrammeBOImpl implements TherapyProgrammeBO {
 
     @Override
     public List<TherapyProgrammeDTO> findByTherapyProgrammeName(String name) {
-        List<TherapyProgram> entities = therapyProgrammeDAO.findByName(name);
+        List<TherapyProgram> entities = therapyProgrammeDAO.findByNameList(name);
         List<TherapyProgrammeDTO> dtoList = new ArrayList<>();
         for (TherapyProgram tp : entities) {
             dtoList.add(

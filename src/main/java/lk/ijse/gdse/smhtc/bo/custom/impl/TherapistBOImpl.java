@@ -89,7 +89,7 @@ public class TherapistBOImpl implements TherapistBO {
 
     @Override
     public List<TherapistDTO> findByName(String name) {
-        return therapistDAO.findByName(name).stream()
+        return therapistDAO.findByNameList(name).stream()
                 .map(therapist -> new TherapistDTO(
                         therapist.getTherapistId(),
                         therapist.getName(),

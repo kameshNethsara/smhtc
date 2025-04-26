@@ -110,6 +110,11 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
+    public Optional<Therapist> findByName(String pk) {
+        return Optional.empty();
+    }
+
+    @Override
     public List<Therapist> findByPhone(String phone) {
         Session session = factoryConfiguration.getSession();
         List<Therapist> therapistList = session.createQuery("FROM Therapist WHERE phone LIKE :phone", Therapist.class)
@@ -120,7 +125,7 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
-    public List<Therapist> findByName(String name) {
+    public List<Therapist> findByNameList(String name) {
         Session session = factoryConfiguration.getSession();
         List<Therapist> therapistList = session.createQuery("FROM Therapist WHERE name LIKE :name", Therapist.class)
                 .setParameter("name", "%" + name + "%")

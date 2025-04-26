@@ -9,6 +9,7 @@ module lk.ijse.gdse.smhtc {
     requires org.hibernate.orm.core;
     requires jakarta.persistence;
     requires java.naming;
+    requires jbcrypt;
 
     opens lk.ijse.gdse.smhtc.config to jakarta.persistence;
     opens lk.ijse.gdse.smhtc.entity to org.hibernate.orm.core;

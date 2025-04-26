@@ -18,4 +18,6 @@ public class PaymentTM {
     private BigDecimal amount;
     private String paymentType;
     private LocalDate paymentDate;
+
+
 }

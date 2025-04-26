@@ -1,5 +1,6 @@
 package lk.ijse.gdse.smhtc.bo.custom;
 
+import lk.ijse.gdse.smhtc.bo.SuperBO;
 import lk.ijse.gdse.smhtc.dto.PatientDTO;
 import lk.ijse.gdse.smhtc.dto.TherapistDTO;
 import lk.ijse.gdse.smhtc.entity.Patient;
@@ -7,7 +8,7 @@ import lk.ijse.gdse.smhtc.entity.Patient;
 import java.util.List;
 import java.util.Optional;
 
-public interface PatientBO {
+public interface PatientBO extends SuperBO {
     public String getNextPatientId();
     public boolean savePatient(PatientDTO patientDTO);
     public boolean updatePatient(PatientDTO patientDTO);

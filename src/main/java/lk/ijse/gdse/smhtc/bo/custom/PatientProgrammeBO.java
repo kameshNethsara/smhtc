@@ -1,5 +1,6 @@
 package lk.ijse.gdse.smhtc.bo.custom;
 
+import lk.ijse.gdse.smhtc.bo.SuperBO;
 import lk.ijse.gdse.smhtc.dto.PatientDTO;
 import lk.ijse.gdse.smhtc.dto.PatientProgrammeDTO;
 import lk.ijse.gdse.smhtc.dto.TherapyProgrammeDTO;
@@ -8,7 +9,7 @@ import lk.ijse.gdse.smhtc.entity.PatientProgramId;
 import java.util.List;
 import java.util.Optional;
 
-public interface PatientProgrammeBO {
+public interface PatientProgrammeBO extends SuperBO {
     public String getNextPatientId();
     public String getNextProgramId();
     public String getNextPaymentId();

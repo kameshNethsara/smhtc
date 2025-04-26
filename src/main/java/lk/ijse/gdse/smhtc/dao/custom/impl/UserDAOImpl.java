@@ -6,6 +6,7 @@ import lk.ijse.gdse.smhtc.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 import java.util.Optional;
@@ -123,6 +124,40 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public Optional<User> findByName(String pk) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean updatePasswordByUsername(String username, String newPassword) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        try {
+            session.beginTransaction();
+
+            User user = session.createQuery(
+                            "FROM User u WHERE u.username = :username", User.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
+
+            if (user != null) {
+//                String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+//                user.setPassword(hashedPassword);
+
+                session.merge(user);
+                session.getTransaction().commit();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) session.getTransaction().rollback();
+            throw new RuntimeException("Password update failed at DAO layer", e);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
     public Optional<String> checkLogin(String userName, String password) {
         try (Session session = factoryConfiguration.getSession()) {
             String userJobRole = session.createQuery(
@@ -130,12 +165,38 @@ public class UserDAOImpl implements UserDAO {
                     .setParameter("userName", userName)
                     .setParameter("password", password)
                     .uniqueResult();
+
             return Optional.ofNullable(userJobRole);
         } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
         }
     }
+
+    //using BCrypt
+
+//    @Override
+//    public Optional<String> checkLogin(String userName, String password) {
+//        try (Session session = factoryConfiguration.getSession()) {
+//            // Fetch the user entity by username
+//            User user = session.createQuery(
+//                            "FROM User u WHERE u.username = :userName", User.class)
+//                    .setParameter("userName", userName)
+//                    .uniqueResult();
+//
+//            if (user != null) {
+//                // Now compare the entered password with the stored hashed password
+//                if (BCrypt.checkpw(password, user.getPassword())) {
+//                    return Optional.of(user.getRole()); // Password correct, return role
+//                }
+//            }
+//            return Optional.empty(); // Username not found OR password incorrect
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return Optional.empty();
+//        }
+//    }
+
 
 
 }
